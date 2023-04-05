@@ -1,0 +1,4 @@
+api-logic:
+  address: ":8081"
+logic-connect:
+  address: ":8081"

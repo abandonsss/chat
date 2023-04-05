@@ -1,0 +1,55 @@
+syntax = "proto3";
+
+option go_package = "./proto;api_logic";
+
+service UserService {
+  rpc Register (UserRegister) returns (RespRegister) {}
+  rpc Login (UserLogin) returns (RespLogin) {}
+  rpc CheckAuth (Token) returns (RespToken) {}
+  rpc Chat (ChatRequest) returns (ChatReply) {}
+}
+
+service ChatService {
+    rpc PublishPerson(ChatRequest) returns (ChatReply) {}
+    rpc PublishRoom(ChatRequest) returns (ChatReply) {}
+}
+
+message UserRegister {
+  string username = 1;
+  string password = 2;
+}
+
+message RespRegister {
+  string msg = 1;
+}
+
+message UserLogin {
+  string username = 1;
+  string password = 2;
+}
+
+message RespLogin {
+  string token = 1;
+  string msg = 2;
+}
+
+message Token {
+  string token = 1;
+}
+
+message RespToken {
+  string username = 1;
+  string userid = 2;
+}
+
+message ChatRequest {
+  string FromUsername = 1;
+  string FromUserId = 2;
+  string msg = 3;
+  string ToUserId = 4;
+  int64 RoomId = 5;
+}
+
+message ChatReply {
+  
+}
